@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a4239;
+            line-height: 1.6;
+            padding: 1rem;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(74, 66, 57, 0.1);
+            width: 100%;
+            max-width: 450px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6b5b4f;
+            font-weight: 300;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b7d6f;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #6b5b4f;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e8ddd4;
+            border-radius: 12px;
+            background: #faf8f5;
+            color: #4a4239;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #c4a484;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.1);
+        }
+
+        input::placeholder {
+            color: #a69688;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a69688' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+        }
+
+        .button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #c4a484 0%, #b8966f 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(196, 164, 132, 0.3);
+            background: linear-gradient(135deg, #b8966f 0%, #a68759 100%);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .resultado {
+            background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #7d9471;
+            margin-top: 1.5rem;
+            color: #4a5d42;
+            font-weight: 500;
+            word-wrap: break-word;
+        }
+
+        .resultado strong {
+            color: #5a6e50;
+        }
+
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: rgba(196, 164, 132, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #6b5b4f;
+            border-left: 3px solid #c4a484;
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-result {
+            color: #8b7d6f;
+            font-style: italic;
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+            
+            .grid-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora Científica</h1>
+        <p class="subtitle">Realize cálculos matemáticos avançados com precisão</p>
+        
+        <div class="info-box">
+            💡 <strong>Instruções:</strong> Para funções trigonométricas (seno, cosseno, tangente), apenas o primeiro número é necessário. Para raiz e potência, o segundo número será o índice ou expoente respectivamente.
+        </div>
+
+        <form action="{{ url_for('calcular') }}" method="post">
+            <div class="grid-inputs">
+                <div class="form-group">
+                    <label for="n1">Primeiro Número</label>
+                    <input type="number" step="any" id="n1" name="n1" placeholder="Digite aqui..." required>
+                </div>
+                <div class="form-group">
+                    <label for="n2">Segundo Número</label>
+                    <input type="number" step="any" id="n2" name="n2" placeholder="Opcional...">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="operacao">Operação Matemática</label>
+                <select id="operacao" name="operacao" required>
+                    <option value="">Selecione uma operação...</option>
+                    <option value="1">➕ Adição</option>
+                    <option value="2">➖ Subtração</option>
+                    <option value="3">✖️ Multiplicação</option>
+                    <option value="4">➗ Divisão</option>
+                    <option value="5">√ Raiz (n₁ √ n₂)</option>
+                    <option value="6">^ Potência (n₁ᴺ²)</option>
+                    <option value="7">sin Seno (em graus)</option>
+                    <option value="8">cos Cosseno (em graus)</option>
+                    <option value="9">tan Tangente (em graus)</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="button">Calcular</button>
+        </form>
+        
+        {% if resultado %}
+        <div class="resultado">
+            <strong>Resultado:</strong> {{ resultado }}
+        </div>
+        {% else %}
+        <div class="resultado">
+            <span class="empty-result"><strong>Resultado:</strong> Aguardando cálculo...</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
