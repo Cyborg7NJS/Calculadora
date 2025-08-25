@@ -241,40 +241,40 @@
                 margin: 10px;
                 max-width: none;
             }
-            
+
             .title {
                 font-size: 20px;
             }
-            
+
             .subtitle {
                 font-size: 12px;
             }
-            
+
             .input-section {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .input-group input {
                 padding: 12px;
                 font-size: 16px;
             }
-            
+
             .operation-grid {
                 grid-template-columns: 1fr;
                 gap: 6px;
             }
-            
+
             .op-btn {
                 height: 45px;
                 font-size: 12px;
             }
-            
+
             .calculate-btn {
                 height: 55px;
                 font-size: 16px;
             }
-            
+
             .result-display {
                 padding: 15px;
                 font-size: 14px;
@@ -285,22 +285,22 @@
             .calculator {
                 padding: 15px;
             }
-            
+
             .display {
                 padding: 15px;
                 min-height: 80px;
             }
-            
+
             .input-group input {
                 padding: 10px;
                 font-size: 14px;
             }
-            
+
             .op-btn {
                 height: 40px;
                 font-size: 11px;
             }
-            
+
             .calculate-btn {
                 height: 50px;
                 font-size: 14px;
@@ -331,12 +331,12 @@
                 transform: none;
                 box-shadow: none;
             }
-            
+
             .op-btn:active {
                 background: rgba(120, 120, 120, 0.9);
                 transform: scale(0.98);
             }
-            
+
             .calculate-btn:active {
                 background: linear-gradient(135deg, #0056CC 0%, #003D99 100%);
                 transform: scale(0.98);
@@ -350,18 +350,18 @@
             <h1 class="title">Calculadora Científica</h1>
             <p class="subtitle">Cálculos matemáticos avançados</p>
         </div>
-        
+
         <div class="display">
             <div class="info-box">
                 <span class="info-icon">💡</span>
-                <strong>Instruções:</strong> Para funções trigonométricas use apenas o primeiro número. Para raiz e potência, o segundo número será o índice/expoente.
+                <strong>Instruções:</strong> Para funções trigonométricas use apenas o primeiro número. Para raiz e potência, o segundo número será o índice/expoente. Você pode deixar campos vazios, eles serão tratados como zero (ou um para operações que não aceitam zero e dois para operações que não aceitam nem zero nem um).
             </div>
 
             <form action="{{ url_for('calcular') }}" method="post">
                 <div class="input-section">
                     <div class="input-group">
                         <label for="n1">Número 1</label>
-                        <input type="number" step="any" id="n1" name="n1" placeholder="0" required>
+                        <input type="number" step="any" id="n1" name="n1" placeholder="0" >
                     </div>
                     <div class="input-group">
                         <label for="n2">Número 2</label>
@@ -375,7 +375,7 @@
                 <span>Resultado aparecerá aqui...</span>
                 {% endif %}
             </div>
-                
+
                 <div class="operation-section">
                     <label>Operações Básicas</label>
                     <div class="operation-grid">
@@ -384,13 +384,13 @@
                         <button type="submit" name="operacao" value="3" class="op-btn basic">✖️ Multiplicação</button>
                         <button type="submit" name="operacao" value="4" class="op-btn basic">➗ Divisão</button>
                     </div>
-                    
+
                     <div class="section-title">Potência & Raiz</div>
                     <div class="operation-grid">
                         <button type="submit" name="operacao" value="6" class="op-btn advanced">xʸ Potência</button>
                         <button type="submit" name="operacao" value="5" class="op-btn advanced">ⁿ√ Raiz</button>
                     </div>
-                    
+
                     <div class="section-title">Trigonometria</div>
                     <div class="operation-grid">
                         <button type="submit" name="operacao" value="7" class="op-btn advanced">sin Seno</button>
@@ -400,14 +400,14 @@
                         <button type="submit" name="operacao" value="22" class="op-btn advanced">acos Arco Cosseno</button>
                         <button type="submit" name="operacao" value="23" class="op-btn advanced">atan Arco Tangente</button>
                     </div>
-                    
+
                     <div class="section-title">Logaritmos</div>
                     <div class="operation-grid">
                         <button type="submit" name="operacao" value="10" class="op-btn advanced">logᵦ Logaritmo</button>
                         <button type="submit" name="operacao" value="12" class="op-btn advanced">ln Natural</button>
                         <button type="submit" name="operacao" value="13" class="op-btn advanced">log₁₀ Decimal</button>
                     </div>
-                    
+
                     <div class="section-title">Funções Especiais</div>
                     <div class="operation-grid">
                         <button type="submit" name="operacao" value="11" class="op-btn advanced">n! Fatorial</button>
@@ -415,7 +415,7 @@
                         <button type="submit" name="operacao" value="15" class="op-btn advanced">π Pi</button>
                         <button type="submit" name="operacao" value="16" class="op-btn advanced">e Euler</button>
                     </div>
-                    
+
                     <div class="section-title">Teoria dos Números</div>
                     <div class="operation-grid">
                         <button type="submit" name="operacao" value="17" class="op-btn advanced">MDC Máximo Divisor</button>
@@ -426,7 +426,7 @@
                 </div>
             </form>
         </div>
-        
+
 
     </div>
 </body>
