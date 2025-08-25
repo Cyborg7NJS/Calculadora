@@ -15,23 +15,23 @@ def calcular():
     if op == 1:
         n1 = float(request.form.get("n1", 0))
         n2 = float(request.form.get("n2", 0))
-        resultado = n1 + n2
+        resultado = f"A soma de {n1} + {n2} é {n1 + n2}"
 
     elif op == 2:
         n1 = float(request.form.get("n1", 0))
         n2 = float(request.form.get("n2", 0))
-        resultado = n1 - n2
+        resultado = f"A subtração de {n1} - {n2} é {n1 - n2}"
 
     elif op == 3:
         n1 = float(request.form.get("n1", 0))
         n2 = float(request.form.get("n2", 0))
-        resultado = n1 * n2
+        resultado = f"A multiplicação de {n1} * {n2} é {n1 * n2}"
 
     elif op == 4:
         n1 = float(request.form.get("n1", 0))
         n2 = float(request.form.get("n2", 0))
         if n2 != 0:
-            resultado = n1 / n2
+            resultado = f"A divisão de {n1} / {n2} é {n1 / n2}"
         else:
             resultado = 'Isso é irresistível não é? O resultado é Infinito ou Indefinido'
 
@@ -44,8 +44,11 @@ def calcular():
     elif op == 6:
         n1 = float(request.form.get("n1", 0))
         n2 = float(request.form.get("n2", 0))
-        P = math.pow(n1, n2)
-        resultado = f'A potencia de {n1} com o expoente {n2} é: {P} '
+        if n2 > 999:
+            resultado = "Número muito grande para calcular a potência."
+        else:
+            P = math.pow(n1, n2)
+            resultado = f'A potencia de {n1} com o expoente {n2} é: {P} '
 
     elif op == 7:
         n1 = float(request.form.get("n1", 0))
@@ -66,8 +69,6 @@ def calcular():
         n2 = float(request.form.get("n2", 0))
         L = math.log(n1, n2)
         resultado = f'O logaritmo de {n1} na base {n2} é {round(L, 2)}'
-
-
 
     elif op == 11:
         try:

@@ -13,231 +13,421 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #4a4239;
-            line-height: 1.6;
-            padding: 1rem;
+            color: #ffffff;
+            padding: 15px;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(74, 66, 57, 0.1);
+        .calculator {
+            background: rgba(40, 40, 40, 0.95);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
             width: 100%;
-            max-width: 450px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 420px;
         }
 
-        h1 {
+        .header {
             text-align: center;
-            color: #6b5b4f;
+            margin-bottom: 25px;
+        }
+
+        .title {
+            font-size: 24px;
             font-weight: 300;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            color: #ffffff;
+            margin-bottom: 8px;
             letter-spacing: -0.5px;
         }
 
         .subtitle {
-            text-align: center;
-            color: #8b7d6f;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
+            font-size: 14px;
+            color: #888;
             font-weight: 400;
-            line-height: 1.5;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .display {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        label {
+        .input-section {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            flex: 1;
+        }
+
+        .input-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #6b5b4f;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e8ddd4;
-            border-radius: 12px;
-            background: #faf8f5;
-            color: #4a4239;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        input:focus, select:focus {
-            border-color: #c4a484;
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(196, 164, 132, 0.1);
-        }
-
-        input::placeholder {
-            color: #a69688;
-        }
-
-        select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a69688' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1rem;
-        }
-
-        .button {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(135deg, #c4a484 0%, #b8966f 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 0.5rem;
         }
 
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(196, 164, 132, 0.3);
-            background: linear-gradient(135deg, #b8966f 0%, #a68759 100%);
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(60, 60, 60, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .button:active {
+        .input-group input:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+            background: rgba(80, 80, 80, 0.9);
+        }
+
+        .input-group input::placeholder {
+            color: #666;
+        }
+
+        .operation-section {
+            margin-bottom: 20px;
+        }
+
+        .operation-section label {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .operation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .op-btn {
+            height: 50px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(80, 80, 80, 0.8);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .op-btn:hover {
+            background: rgba(100, 100, 100, 0.9);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .op-btn:active {
             transform: translateY(0);
         }
 
-        .resultado {
-            background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #7d9471;
-            margin-top: 1.5rem;
-            color: #4a5d42;
-            font-weight: 500;
+        .op-btn.basic {
+            background: linear-gradient(135deg, #FF9500 0%, #FF8C00 100%);
+        }
+
+        .op-btn.basic:hover {
+            background: linear-gradient(135deg, #FF8C00 0%, #FF7700 100%);
+        }
+
+        .op-btn.advanced {
+            background: rgba(70, 70, 70, 0.8);
+        }
+
+        .op-btn.advanced:hover {
+            background: rgba(90, 90, 90, 0.9);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #007AFF 0%, #0056CC 100%);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+            background: linear-gradient(135deg, #0056CC 0%, #003D99 100%);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .result-display {
+            background: rgba(0, 122, 255, 0.1);
+            border: 1px solid rgba(0, 122, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 1.5;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             word-wrap: break-word;
         }
 
-        .resultado strong {
-            color: #5a6e50;
+        .result-display.success {
+            background: rgba(52, 199, 89, 0.1);
+            border-color: rgba(52, 199, 89, 0.3);
+            color: #34C759;
         }
 
-        .grid-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-box {
-            background: rgba(196, 164, 132, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #6b5b4f;
-            border-left: 3px solid #c4a484;
-            margin-bottom: 1.5rem;
-        }
-
-        .empty-result {
-            color: #8b7d6f;
+        .result-display.empty {
+            color: #666;
             font-style: italic;
         }
 
-        @media (max-width: 520px) {
-            .container {
-                margin: 1rem;
-                padding: 2rem;
+        .section-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .calculator {
+                padding: 20px;
+                margin: 10px;
+                max-width: none;
             }
             
-            .grid-inputs {
+            .title {
+                font-size: 20px;
+            }
+            
+            .subtitle {
+                font-size: 12px;
+            }
+            
+            .input-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .input-group input {
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .operation-grid {
                 grid-template-columns: 1fr;
+                gap: 6px;
             }
             
-            h1 {
-                font-size: 1.6rem;
+            .op-btn {
+                height: 45px;
+                font-size: 12px;
+            }
+            
+            .calculate-btn {
+                height: 55px;
+                font-size: 16px;
+            }
+            
+            .result-display {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .calculator {
+                padding: 15px;
+            }
+            
+            .display {
+                padding: 15px;
+                min-height: 80px;
+            }
+            
+            .input-group input {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .op-btn {
+                height: 40px;
+                font-size: 11px;
+            }
+            
+            .calculate-btn {
+                height: 50px;
+                font-size: 14px;
+            }
+        }
+
+        /* Dark theme enhancements */
+        .info-box {
+            background: rgba(100, 100, 100, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .info-icon {
+            color: #007AFF;
+            margin-right: 8px;
+        }
+
+        /* Hover effects for mobile */
+        @media (hover: none) {
+            .op-btn:hover,
+            .calculate-btn:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .op-btn:active {
+                background: rgba(120, 120, 120, 0.9);
+                transform: scale(0.98);
+            }
+            
+            .calculate-btn:active {
+                background: linear-gradient(135deg, #0056CC 0%, #003D99 100%);
+                transform: scale(0.98);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora Científica</h1>
-        <p class="subtitle">Realize cálculos matemáticos avançados com precisão</p>
-        
-        <div class="info-box">
-            💡 <strong>Instruções:</strong> Para funções trigonométricas (seno, cosseno, tangente), apenas o primeiro número é necessário. Para raiz e potência, o segundo número será o índice ou expoente respectivamente.
+    <div class="calculator">
+        <div class="header">
+            <h1 class="title">Calculadora Científica</h1>
+            <p class="subtitle">Cálculos matemáticos avançados</p>
         </div>
+        
+        <div class="display">
+            <div class="info-box">
+                <span class="info-icon">💡</span>
+                <strong>Instruções:</strong> Para funções trigonométricas use apenas o primeiro número. Para raiz e potência, o segundo número será o índice/expoente.
+            </div>
 
-        <form action="{{ url_for('calcular') }}" method="post">
-            <div class="grid-inputs">
-                <div class="form-group">
-                    <label for="n1">Primeiro Número</label>
-                    <input type="number" step="any" id="n1" name="n1" placeholder="Digite aqui..." required>
+            <form action="{{ url_for('calcular') }}" method="post">
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="n1">Número 1</label>
+                        <input type="number" step="any" id="n1" name="n1" placeholder="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="n2">Número 2</label>
+                        <input type="number" step="any" id="n2" name="n2" placeholder="0">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="n2">Segundo Número</label>
-                    <input type="number" step="any" id="n2" name="n2" placeholder="Opcional...">
+            <div class="result-display {% if resultado %}success{% else %}empty{% endif %}">
+                {% if resultado %}
+                <strong>{{ resultado }}</strong>
+                {% else %}
+                <span>Resultado aparecerá aqui...</span>
+                {% endif %}
+            </div>
+                
+                <div class="operation-section">
+                    <label>Operações Básicas</label>
+                    <div class="operation-grid">
+                        <button type="submit" name="operacao" value="1" class="op-btn basic">➕ Adição</button>
+                        <button type="submit" name="operacao" value="2" class="op-btn basic">➖ Subtração</button>
+                        <button type="submit" name="operacao" value="3" class="op-btn basic">✖️ Multiplicação</button>
+                        <button type="submit" name="operacao" value="4" class="op-btn basic">➗ Divisão</button>
+                    </div>
+                    
+                    <div class="section-title">Potência & Raiz</div>
+                    <div class="operation-grid">
+                        <button type="submit" name="operacao" value="6" class="op-btn advanced">xʸ Potência</button>
+                        <button type="submit" name="operacao" value="5" class="op-btn advanced">ⁿ√ Raiz</button>
+                    </div>
+                    
+                    <div class="section-title">Trigonometria</div>
+                    <div class="operation-grid">
+                        <button type="submit" name="operacao" value="7" class="op-btn advanced">sin Seno</button>
+                        <button type="submit" name="operacao" value="8" class="op-btn advanced">cos Cosseno</button>
+                        <button type="submit" name="operacao" value="9" class="op-btn advanced">tan Tangente</button>
+                        <button type="submit" name="operacao" value="21" class="op-btn advanced">asin Arco Seno</button>
+                        <button type="submit" name="operacao" value="22" class="op-btn advanced">acos Arco Cosseno</button>
+                        <button type="submit" name="operacao" value="23" class="op-btn advanced">atan Arco Tangente</button>
+                    </div>
+                    
+                    <div class="section-title">Logaritmos</div>
+                    <div class="operation-grid">
+                        <button type="submit" name="operacao" value="10" class="op-btn advanced">logᵦ Logaritmo</button>
+                        <button type="submit" name="operacao" value="12" class="op-btn advanced">ln Natural</button>
+                        <button type="submit" name="operacao" value="13" class="op-btn advanced">log₁₀ Decimal</button>
+                    </div>
+                    
+                    <div class="section-title">Funções Especiais</div>
+                    <div class="operation-grid">
+                        <button type="submit" name="operacao" value="11" class="op-btn advanced">n! Fatorial</button>
+                        <button type="submit" name="operacao" value="14" class="op-btn advanced">eˣ Exponencial</button>
+                        <button type="submit" name="operacao" value="15" class="op-btn advanced">π Pi</button>
+                        <button type="submit" name="operacao" value="16" class="op-btn advanced">e Euler</button>
+                    </div>
+                    
+                    <div class="section-title">Teoria dos Números</div>
+                    <div class="operation-grid">
+                        <button type="submit" name="operacao" value="17" class="op-btn advanced">MDC Máximo Divisor</button>
+                        <button type="submit" name="operacao" value="18" class="op-btn advanced">MMC Mínimo Múltiplo</button>
+                        <button type="submit" name="operacao" value="19" class="op-btn advanced">C(n,r) Combinação</button>
+                        <button type="submit" name="operacao" value="20" class="op-btn advanced">P(n,r) Permutação</button>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="operacao">Operação Matemática</label>
-                <select id="operacao" name="operacao" required>
-                    <option value="">Selecione uma operação...</option>
-                    <option value="1">➕ Adição</option>
-                    <option value="2">➖ Subtração</option>
-                    <option value="3">✖️ Multiplicação</option>
-                    <option value="4">➗ Divisão</option>
-                    <option value="5">√ Raiz (n₁ √ n₂)</option>
-                    <option value="6">^ Potência (n₁ᴺ²)</option>
-                    <option value="7">sin Seno (em graus)</option>
-                    <option value="8">cos Cosseno (em graus)</option>
-                    <option value="9">tan Tangente (em graus)</option>
-                    <option value="10">Log (logₙ₂(n₁))</option>
-                    <option value="11">Fatorial (n1)</option>
-                    <option value="12">ln Logaritmo Natural (base e)</option>
-                    <option value="13">log₁₀ Logaritmo Decimal</option>
-                    <option value="14">Exp (eⁿ¹)</option>
-                    <option value="15">π (usar n1 * π)</option>
-                    <option value="16">Constante e (usar n1 * e)</option>
-                    <option value="17">MDC Máximo Divisor Comum (gcd)</option>
-                    <option value="18">MMC Mínimo Múltiplo Comum (lcm)</option>
-                    <option value="19">Combinação (C(n1, n2))</option>
-                    <option value="20">Permutação (P(n1, n2))</option>
-                    <option value="21">Arco Seno (asin, graus)</option>
-                    <option value="22">Arco Cosseno (acos, graus)</option>
-                    <option value="23">Arco Tangente (atan, graus)</option>
-                </select>
-            </div>
-            
-            <button type="submit" class="button">Calcular</button>
-        </form>
+            </form>
+        </div>
         
-        {% if resultado %}
-        <div class="resultado">
-            <strong>Resultado:</strong> {{ resultado }}
-        </div>
-        {% else %}
-        <div class="resultado">
-            <span class="empty-result"><strong>Resultado:</strong> Aguardando cálculo...</span>
-        </div>
-        {% endif %}
+
     </div>
 </body>
 </html>
